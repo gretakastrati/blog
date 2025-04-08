@@ -1,14 +1,14 @@
 package com.example.blog.repository;
 
-import com.example.blog.entity.Categorie;
+import com.example.blog.entity.Category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface CategorieRepository extends JpaRepository<Categorie, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    Optional<Categorie> findByName(String name);
+    Optional<Category> findByName(String name);
 
     boolean existsByName(String name);
 }

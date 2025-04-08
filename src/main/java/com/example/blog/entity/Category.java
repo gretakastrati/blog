@@ -8,9 +8,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "tags")
-public class Categorie {
+public class Category {
 
-    public Categorie (int id, String name, List<Post> posts) {
+    public Category(int id, String name, List<Post> posts) {
         this.id = id;
         this.name = name;
         this.posts = posts;
@@ -56,7 +56,7 @@ public class Categorie {
 
     @Override
     public String toString() {
-        return "Categorie{" +
+        return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", posts=" + posts +
