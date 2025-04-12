@@ -1,5 +1,7 @@
 package com.example.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -7,9 +9,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = User.class)
 public class User {
 
-    public User(String username, String password, String email, Set<Role> roles) {
+    public User(Long id, String username, String password, String email, Set<Role> roles) {
+
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -18,8 +23,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "username")
     private String username;
@@ -38,16 +42,16 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
+    public User() {
+
+    }
 
 
-
-
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
